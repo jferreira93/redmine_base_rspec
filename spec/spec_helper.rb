@@ -9,7 +9,7 @@ if ENV['COVERAGE']
 ###    binding.pry
     #exclude core dirs coverage
     add_filter do |file|
-      file.filename.include?('/lib/plugins/') || 
+      file.filename.include?('/lib/plugins/') ||
         !file.filename.include?('/plugins/')
     end
   end
@@ -39,4 +39,21 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.include AssertSelectRoot, :type => :request
+
+  config.include ActiveSupport::Testing::TimeHelpers
+  config.include RSpec::Rails::RequestExampleGroup, type: :feature
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, :type => type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
+    config.include ::Rails::Controller::Testing::Integration, :type => type
+  end
+  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+  FactoryBot.definition_file_paths << './redmine_base_rspec/factories/'
+  FactoryBot.find_definitions
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with :truncation
+    Setting.create(name: 'bcc_recipients', value: '0')
+  end
 end

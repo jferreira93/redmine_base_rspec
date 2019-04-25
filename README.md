@@ -20,7 +20,7 @@ As of today the plugin provides the following things:
 
 Note that if you want to run specs directly with the `rspec` command, and you use the `spec_helper` of this plugin directly, you may have to specify the `-I` option to have the correct load path:
 
-    rspec -Iplugins/redmine_base_rspec/spec  plugins/<your_plugin>/spec
+    rspec -Iplugins/redmine_base_spec/spec  plugins/<your_plugin>/spec
 
 Installation
 ------------
@@ -29,7 +29,7 @@ This plugin is compatible with Redmine 2.1.0+.
 
 Please apply general instructions for plugins [here](http://www.redmine.org/wiki/redmine/Plugins).
 
-First download the source or clone the plugin and put it in the "plugins/" directory of your redmine instance. Note that this is crucial that the directory is named redmine_base_rspec !
+First download the source or clone the plugin and put it in the "plugins/" directory of your redmine instance. Note that this is crucial that the directory is named redmine_base_spec !
 
 Then execute:
 
