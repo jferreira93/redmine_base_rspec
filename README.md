@@ -20,7 +20,9 @@ As of today the plugin provides the following things:
 
 Note that if you want to run specs directly with the `rspec` command, and you use the `spec_helper` of this plugin directly, you may have to specify the `-I` option to have the correct load path:
 
-    rspec -Iplugins/redmine_base_spec/spec  plugins/<your_plugin>/spec
+Inside plugins folder run:
+
+    rspec -Iplugins/redmine_base_spec/spec  ./plugins/<your_plugin>/spec
 
 Installation
 ------------

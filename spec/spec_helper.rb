@@ -1,7 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 
 #load simplecov
-if ENV['COVERAGE']
+# if ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start 'rails' do
     coverage_dir 'tmp/coverage'
@@ -13,7 +13,7 @@ if ENV['COVERAGE']
         !file.filename.include?('/plugins/')
     end
   end
-end
+# end
 
 #load rails/redmine
 require File.expand_path('../../../../config/environment', __FILE__)
